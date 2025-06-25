@@ -1,0 +1,16 @@
+/** Lista Bucket de S3*/
+
+aws s3 ls
+
+/** copiar y cargar archivo.py en el IDE para que accedamos al Bucket de S3*/
+
+aws s3 cp s3://c166904a4291964l10667011t1w2561968564-samplebucket-tn1rldri13jx/list-buckets.py .
+
+
+/** se ejecuta el script y accede a S3 para listar los Bucket de S3*/
+
+python3 list-buckets.py
+
+/** cargar index.html y se crea en el Bucket de S3*/
+
+aws s3 cp index.html s3://c166904a4291964l10667011t1w2561968564-samplebucket-tn1rldri13jx/index.html
