@@ -14,3 +14,31 @@ python3 list-buckets.py
 /** cargar index.html y se crea en el Bucket de S3*/
 
 aws s3 cp index.html s3://c166904a4291964l10667011t1w2561968564-samplebucket-tn1rldri13jx/index.html
+
+-------------DESCARGAR ARCHIVOS--------------------
+cd ~/sysops-activity-files
+tar xvzf static-website.tar.gz
+
+----------------ELIMINAR----------------------
+rm static-website.tar.gz 
+
+aws s3api create-bucket --bucket diego1993lab --region eu-west-2 --create-bucket-configuration LocationConstraint=eu-west-2
+
+aws s3api put-bucket-ownership-controls \
+--bucket diego1993lab \
+--ownership-controls "Rules=[{ObjectOwnership=BucketOwnerPreferred}]"
+
+aws s3api put-public-access-block \
+--bucket diego1993lab \
+--public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false"
+
+aws s3 website s3://diego1993lab/ --index-document index.html
+
+
+----------HABILITAR EL STATIC WEBSITE HOSTING------------
+aws s3 cp . s3://diego1993lab/ --recursive --acl public-read
+
+aws s3 ls diego1993lab
+
+--------------------CREAR ARCHIVOS POR LOTES--------------
+
