@@ -42,3 +42,31 @@ aws s3 ls diego1993lab
 
 --------------------CREAR ARCHIVOS POR LOTES--------------
 
+//**Para cambiar los directorios y crear un archivo vacío, ejecute los siguientes comandos en la sesión de terminal de SSH: */
+
+cd ~
+touch update-website.sh
+
+
+----------------Abra el archivo vacío en el editor VI.
+
+-vi update-website.sh
+
+--!/bin/bash
+--aws s3 cp ~/sysops-activity-files/ s3://diego1993lab/ --recursive --acl public-read
+
+--Conviértalo en un archivo de lote ejecutable.
+
+--chmod +x update-website.sh
+--Abra la copia local del archivo index.html en un editor de textos.
+
+--vi sysops-activity-files/index.html
+--Modifique el archivo como se describe:
+
+--Ubique la primera línea que tiene el código HTML bgcolor="aquamarine" y cámbielo a bgcolor="gainsboro"
+
+--Ubique la línea que tiene el código HTML bgcolor="orange" y cámbielo a bgcolor="cornsilk"
+
+--Ubique la segunda línea que tiene el código HTML bgcolor="aquamarine" y cámbielo a bgcolor="gainsboro"
+
+--Guarde los cambios.
